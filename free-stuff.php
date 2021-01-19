@@ -4,8 +4,8 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL);
 
-if (!isset($_GET['email']))
-    exit('No \'email\' $_GET parameter sent, cannot send updates');
+if (!isset($_GET['to_email']))
+    exit('No \'to_email\' $_GET parameter sent, cannot send updates');
 
 require __DIR__ . '/config.php';
 require __DIR__ . '/vendor/autoload.php';
@@ -127,12 +127,10 @@ foreach ($PROVIDERS as $PROVIDER) {
         $html .= "<br><a href=\"{$PROVIDER->link}\"><img src=\"{$PROVIDER->imageUrl}\"></a>";
         $text = $PROVIDER->link;
         $to = [];
-        if (isset($_GET['email'])) {
-            $to[] = [
-                'Email' => $_GET['email'],
-                'Name' => 'You'
-            ];
-        }
+        $to[] = [
+            'Email' => $_GET['to_email'],
+            'Name' => 'You'
+        ];
 //        var_dump($to);
         echo $html . '<br><br><br><br>';
 //        break;

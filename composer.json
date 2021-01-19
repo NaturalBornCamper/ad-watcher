@@ -1,0 +1,5 @@
+{
+    "require": {
+        "rct567/dom-query": "^0.7.2"
+    }
+}
